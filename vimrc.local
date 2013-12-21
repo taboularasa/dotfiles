@@ -10,9 +10,6 @@ set encoding=utf-8
 vmap <C-x> :!pbcopy<CR>
 vmap <C-c> :w !pbcopy<CR><CR>
 
-" Center window on cursor
-nmap <space> zz
-
 " Center window on search
 nmap n nzz
 nmap N Nzz
@@ -33,10 +30,12 @@ match OverLength /\%>80v/
 fun! s:LongLineHLToggle()
  if !exists('w:longlinehl')
   let w:longlinehl = matchadd('ErrorMsg', '.\%>80v', 0)
-  echo "Long lines highlighted"
  else
   call matchdelete(w:longlinehl)
   unl w:longlinehl
-  echo "Long lines unhighlighted"
  endif
 endfunction
+:call s:LongLineHLToggle()
+
+" NERDTree
+map <Leader>n :NERDTreeToggle<CR>
