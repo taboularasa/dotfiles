@@ -72,3 +72,6 @@ unsetopt nomatch
 
 # Local config
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
+
+
+eval "$(rbenv init - --no-rehash)"
