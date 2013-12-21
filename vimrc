@@ -75,7 +75,8 @@ if executable('ag')
 endif
 
 " Color scheme
-colorscheme desert-warm-256
+set t_Co=256
+colorscheme solarized
 
 " Numbers
 set number

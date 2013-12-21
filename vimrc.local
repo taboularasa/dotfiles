@@ -39,3 +39,7 @@ endfunction
 
 " NERDTree
 map <Leader>n :NERDTreeToggle<CR>
+
+" Airline
+set laststatus=2
+let g:airline_powerline_fonts = 1

@@ -1,3 +1,4 @@
-Bundle 'Lokaltog/vim-powerline'
+Bundle 'bling/vim-airline'
 Bundle 'stephenmckinney/vim-solarized-powerline'
 Bundle 'scrooloose/nerdtree'
+Bundle 'rking/ag.vim'
