@@ -14,6 +14,7 @@
   pr = !hub pull-request
   st = status
   up = !git fetch origin && git rebase origin/master
+  lol = log --graph --decorate --pretty=oneline --abbrev-commit --all
 [core]
   excludesfile = ~/.gitignore
   autocrlf = input
@@ -24,5 +25,5 @@
 [commit]
   template = ~/.gitmessage
 [user]
-	name = David Elliott
-	email = david@gophilosophie.com
+  name = David Elliott
+  email = david@gophilosophie.com
