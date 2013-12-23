@@ -15,6 +15,8 @@
   st = status
   up = !git fetch origin && git rebase origin/master
   lol = log --graph --decorate --pretty=oneline --abbrev-commit --all
+  br = branch
+  bra = branch -a
 [core]
   excludesfile = ~/.gitignore
   autocrlf = input
