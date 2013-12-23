@@ -13,15 +13,8 @@ alias -g ONE="| awk '{ print \$1}'"
 alias e="$EDITOR"
 alias v="$VISUAL"
 
-# git
-alias gci="git pull --rebase && rake && git push"
-
 # Bundler
 alias b="bundle"
-
-# Tests and Specs
-alias t="ruby -I test"
-alias cuc="bundle exec cucumber"
 
 # Rubygems
 alias gi="gem install"
@@ -33,6 +26,9 @@ alias m="migrate"
 alias rk="rake"
 alias s="rspec"
 alias z="zeus"
+
+# Directories
+alias dk="cd ~/work/sightglass-web"
 
 # Include custom aliases
 [[ -f ~/.aliases.local ]] && source ~/.aliases.local
