@@ -29,6 +29,8 @@ alias z="zeus"
 
 # Directories
 alias dk="cd ~/work/sightglass-web"
+alias dm="cd ~/work/wego-doorman"
+alias wg="cd ~/work/wego"
 
 # Include custom aliases
 [[ -f ~/.aliases.local ]] && source ~/.aliases.local
