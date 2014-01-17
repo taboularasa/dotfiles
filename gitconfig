@@ -29,3 +29,5 @@
 [user]
   name = David Elliott
   email = david@gophilosophie.com
+[branch]
+  autosetuprebase = always
