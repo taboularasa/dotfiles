@@ -6,9 +6,10 @@ set mouse=a
 
 set encoding=utf-8
 
-" Use the system clipboard
-vmap <C-x> :!pbcopy<CR>
-vmap <C-c> :w !pbcopy<CR><CR>
+" Yank text to the OS X clipboard
+noremap <leader>y "*y
+noremap <leader>yy "*Y
+noremap <leader>p :set paste<CR>:put  *<CR>:set nopaste<CR>
 
 " Center window on search
 nmap n nzz
