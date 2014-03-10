@@ -3,6 +3,7 @@ vmap r "_dP
 
 " Set mouse events
 set mouse=a
+set ttymouse=xterm2
 
 set encoding=utf-8
 
