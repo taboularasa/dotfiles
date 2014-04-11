@@ -49,3 +49,6 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=235
 
 " ruby text object
 runtime macros/matchit.vim
+
+" Dash config
+:nmap <silent> <leader>d <Plug>DashSearch
