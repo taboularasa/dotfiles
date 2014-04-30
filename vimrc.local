@@ -54,3 +54,6 @@ runtime macros/matchit.vim
 :nmap <silent> <leader>d <Plug>DashSearch
 
 let NERDTreeHijackNetrw=0
+
+let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
+nnoremap <C-w>E :SyntasticCheck<CR> :SyntasticToggleMode<CR>
