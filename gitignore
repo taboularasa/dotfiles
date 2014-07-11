@@ -13,3 +13,4 @@ tmp/**/*
 zeus.json
 .ruby-version
 database.yml
+.rbenv-vars
