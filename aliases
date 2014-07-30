@@ -32,8 +32,7 @@ alias dk="cd ~/work/sightglass-web"
 alias dm="cd ~/work/wego-doorman"
 alias wg="cd ~/work/wego"
 alias mo="cd ~/work/mother"
-alias cap="cd ~/work/capacitymatch"
-alias csb="cd ~/work/curbstand/curbstand-backend"
+alias csb="cd ~/work/curbstand/curbstand-v3"
 
 # Include custom aliases
 [[ -f ~/.aliases.local ]] && source ~/.aliases.local
