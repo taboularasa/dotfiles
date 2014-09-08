@@ -58,9 +58,7 @@ setopt AUTOCD
 setopt AUTOPUSHD PUSHDMINUS PUSHDSILENT PUSHDTOHOME
 setopt cdablevars
 
-# Try to correct command line spelling
-setopt CORRECT CORRECT_ALL
-
+DISABLE_CORRECTION="true"
 # Enable extended globbing
 setopt EXTENDED_GLOB
 
