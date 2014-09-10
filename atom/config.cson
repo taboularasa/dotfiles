@@ -14,7 +14,7 @@
   ]
   'themes': [
     'atom-dark-ui'
-    'solarized-dark-syntax'
+    'monokai'
   ]
 'exception-reporting':
   'userId': 'adca269e-5cf2-fcc8-e740-8c81a0adbf71'
