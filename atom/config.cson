@@ -1,0 +1,43 @@
+'editor':
+  'showIndentGuide': true
+  'invisibles': {}
+'core':
+  'disabledPackages': [
+    'autocomplete'
+    'atom-ctags'
+    'api-blueprint-preview'
+    'sourcegraph-atom'
+    'background-tips'
+    'dash'
+    'image-view'
+    'linter'
+  ]
+  'themes': [
+    'atom-dark-ui'
+    'solarized-dark-syntax'
+  ]
+'exception-reporting':
+  'userId': 'adca269e-5cf2-fcc8-e740-8c81a0adbf71'
+'release-notes':
+  'viewedVersion': '0.95.0'
+'welcome':
+  'showOnStartup': false
+'metrics':
+  'userId': '6de0ea5ab590d7b69d3e8af1e2ff7508c1fcb980'
+'whitespace': {}
+'find-and-replace':
+  'openProjectFindResultsInRightPane': true
+  'focusEditorAfterSearch': true
+'tree-view':
+  'hideVcsIgnoredFiles': true
+'linter':
+  'showStatusBarWhenCursorIsInErrorRange': true
+  'showHighlighting': false
+'linter-rubocop': {}
+'autocomplete-plus':
+  'includeCompletionsFromAllBuffers': true
+'sourcegraph-atom':
+  'logStatusToConsole': true
+  'srcExecutablePath': '/usr/local/bin/src'
+'emmet': {}
+'easy-motion': {}

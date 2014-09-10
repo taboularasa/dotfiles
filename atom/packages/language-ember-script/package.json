@@ -1,0 +1,36 @@
+{
+  "name": "language-ember-script",
+  "version": "0.1.0",
+  "description": "EmberScript language support in Atom",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ghempton/language-ember-script.git"
+  },
+  "homepage": "https://github.com/ghempton/language-ember-script",
+  "bugs": {
+    "url": "https://github.com/ghempton/language-ember-script/issues"
+  },
+  "engines": {
+    "atom": ">0.50.0"
+  },
+  "scripts": {
+    "test": "grunt"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "grunt": "~0.4.2",
+    "grunt-coffeelint": "0.0.8",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-lesslint": "~1.0.0",
+    "grunt-apm": "0.0.1"
+  },
+  "readme": "# EmberScript language support in Atom\n\nAdds syntax highlighting and snippets to EmberScript files in Atom.\n\nContributions are greatly appreciated. Please fork this repository and open a\npull request to add snippets, make grammar tweaks, etc.\n",
+  "readmeFilename": "README.md",
+  "_id": "language-ember-script@0.1.0",
+  "dist": {
+    "shasum": "79ad6e4a99a76d89bf4d3f3fad2800a8082f5a4d"
+  },
+  "_resolved": "/var/folders/py/5h9jmzy91jl0m8vff4ss_9xc0000gp/T/d-114627-57305-1k6uk0w/package.tgz",
+  "_from": "/var/folders/py/5h9jmzy91jl0m8vff4ss_9xc0000gp/T/d-114627-57305-1k6uk0w/package.tgz"
+}

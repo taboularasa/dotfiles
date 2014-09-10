@@ -1,0 +1,26 @@
+{
+  "name": "better-handlebars",
+  "version": "0.1.1",
+  "description": "Better Handlebars for Atom",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/WMeldon/better-handlebars"
+  },
+  "license": "MIT",
+  "engines": {
+    "atom": ">0.50.0"
+  },
+  "dependencies": {},
+  "readme": "# Better Handlebars for Atom\n\n![handlebars-syntax](https://github.com/WMeldon/better-handlebars/raw/master/example.png)\n\nSyntax is a mostly vanilla conversion of [Sublime Handlebars](https://github.com/daaain/Handlebars),\nbut with a few fixes.  \n\nScope properties mostly stolen from [Atom language-html](https://github.com/atom/language-html).\n\n### Improvements:\n\n  * ```ctrl-/``` yields ```{{!-- --}}```\n  * Snippets for most common Handlebars blocks\n  * Block highlighting more specific\n",
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": "https://github.com/WMeldon/better-handlebars/issues"
+  },
+  "homepage": "https://github.com/WMeldon/better-handlebars",
+  "_id": "better-handlebars@0.1.1",
+  "dist": {
+    "shasum": "ee366935bc1c82616302de8adf4a6e98c6743227"
+  },
+  "_resolved": "/var/folders/py/5h9jmzy91jl0m8vff4ss_9xc0000gp/T/d-114526-12964-r35mty/package.tgz",
+  "_from": "/var/folders/py/5h9jmzy91jl0m8vff4ss_9xc0000gp/T/d-114526-12964-r35mty/package.tgz"
+}

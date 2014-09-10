@@ -1,0 +1,25 @@
+{
+  "name": "white-cursor",
+  "version": "0.3.0",
+  "description": "Provides a white I-bar cursor in editor views for use with dark backgrounds.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lee-dohm/white-cursor"
+  },
+  "license": "MIT",
+  "engines": {
+    "atom": ">0.50.0"
+  },
+  "readme": "# White Cursor Atom Package\n\nProvides a white I-bar cursor in editor views for use with dark backgrounds.\n\n![White Cursor animation](https://s3.amazonaws.com/lee-dohm/WhiteCursor.gif)\n",
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": "https://github.com/lee-dohm/white-cursor/issues"
+  },
+  "homepage": "https://github.com/lee-dohm/white-cursor",
+  "_id": "white-cursor@0.3.0",
+  "dist": {
+    "shasum": "d70fbce7eec916e31e4c15df9e15e56b58f35355"
+  },
+  "_resolved": "/var/folders/py/5h9jmzy91jl0m8vff4ss_9xc0000gp/T/d-114625-1664-1bz7uql/package.tgz",
+  "_from": "/var/folders/py/5h9jmzy91jl0m8vff4ss_9xc0000gp/T/d-114625-1664-1bz7uql/package.tgz"
+}
