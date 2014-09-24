@@ -10,6 +10,8 @@
     'background-tips'
     'dash'
     'image-view'
+    'asteroids'
+    'linter-rubocop'
     'linter'
   ]
   'themes': [
