@@ -74,3 +74,4 @@ unsetopt nomatch
 
 eval "$(rbenv init - --no-rehash)"
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
