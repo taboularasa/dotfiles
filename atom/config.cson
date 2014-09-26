@@ -30,8 +30,7 @@
 'find-and-replace':
   'openProjectFindResultsInRightPane': true
   'focusEditorAfterSearch': true
-'tree-view':
-  'hideVcsIgnoredFiles': true
+'tree-view': {}
 'linter':
   'showStatusBarWhenCursorIsInErrorRange': true
   'showHighlighting': false
