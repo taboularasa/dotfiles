@@ -1,6 +1,7 @@
 {
   "name": "white-cursor",
-  "version": "0.3.0",
+  "main": "./lib/white-cursor.coffee",
+  "version": "0.4.0",
   "description": "Provides a white I-bar cursor in editor views for use with dark backgrounds.",
   "repository": {
     "type": "git",
@@ -10,16 +11,16 @@
   "engines": {
     "atom": ">0.50.0"
   },
-  "readme": "# White Cursor Atom Package\n\nProvides a white I-bar cursor in editor views for use with dark backgrounds.\n\n![White Cursor animation](https://s3.amazonaws.com/lee-dohm/WhiteCursor.gif)\n",
+  "readme": "# White Cursor Atom Package\n\nProvides a white I-bar cursor in editor views for use with dark backgrounds.\n\n![White Cursor animation](https://raw.githubusercontent.com/lee-dohm/white-cursor/master/WhiteCursor.gif)\n\n## Installation\n\nThe package can be installed by using the Settings screen and searching for `white-cursor`.\n\nIt can also be installed from the command line with the command:\n\n```bash\napm install white-cursor\n```\n\n## Use\n\nBy default the white cursor is always enabled. However, if you set the `white-cursor.enabled` setting to `detect`, then when Atom is loaded or any time you change the themes, the White Cursor package attempts to determine whether you have a dark syntax theme set. If so, it enables the white cursor. You can override its autodetection for the current session by using the `White Cursor: Toggle` command from the Command Palette.\n\n### Commands\n\n* `white-cursor:toggle` &mdash; Toggles the white cursor on or off.\n\n### Configuration\n\n* `white-cursor.enabled` &mdash; Accepts one of three values:\n    * `always` &mdash; White cursor is always enabled **(default)**\n    * `detect` &mdash; Detects whether a dark syntax is being used and enables the white cursor accordingly\n    * `never` &mdash; White cursor is always *disabled*\n* `white-cursor.darkThemes` &mdash; An array of theme package names (lowercased and hyphenated) that should be treated as dark syntax themes even if they do not contain both `dark` and `syntax` in the name\n\n## Copyright\n\nCopyright &copy; 2014 [Lee Dohm](http://www.lee-dohm.com). See [LICENSE](https://github.com/lee-dohm/white-cursor/blob/master/LICENSE.md) for details.\n",
   "readmeFilename": "README.md",
   "bugs": {
     "url": "https://github.com/lee-dohm/white-cursor/issues"
   },
   "homepage": "https://github.com/lee-dohm/white-cursor",
-  "_id": "white-cursor@0.3.0",
+  "_id": "white-cursor@0.4.0",
   "dist": {
-    "shasum": "d70fbce7eec916e31e4c15df9e15e56b58f35355"
+    "shasum": "24145658176657b73d71b2aabcf6df0e0024a0ec"
   },
-  "_resolved": "/var/folders/py/5h9jmzy91jl0m8vff4ss_9xc0000gp/T/d-114625-1664-1bz7uql/package.tgz",
-  "_from": "/var/folders/py/5h9jmzy91jl0m8vff4ss_9xc0000gp/T/d-114625-1664-1bz7uql/package.tgz"
+  "_resolved": "/private/var/folders/py/5h9jmzy91jl0m8vff4ss_9xc0000gp/T/d-11496-2853-eoriyz/package.tgz",
+  "_from": "/private/var/folders/py/5h9jmzy91jl0m8vff4ss_9xc0000gp/T/d-11496-2853-eoriyz/package.tgz"
 }

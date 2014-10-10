@@ -1,6 +1,5 @@
 'editor':
   'showIndentGuide': true
-  'invisibles': {}
 'core':
   'disabledPackages': [
     'autocomplete'
@@ -26,19 +25,15 @@
   'showOnStartup': false
 'metrics':
   'userId': '6de0ea5ab590d7b69d3e8af1e2ff7508c1fcb980'
-'whitespace': {}
 'find-and-replace':
   'openProjectFindResultsInRightPane': true
   'focusEditorAfterSearch': true
-'tree-view': {}
 'linter':
   'showStatusBarWhenCursorIsInErrorRange': true
   'showHighlighting': false
-'linter-rubocop': {}
 'autocomplete-plus':
   'includeCompletionsFromAllBuffers': true
 'sourcegraph-atom':
   'logStatusToConsole': true
   'srcExecutablePath': '/usr/local/bin/src'
-'emmet': {}
 'easy-motion': {}
