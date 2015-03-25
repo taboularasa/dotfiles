@@ -1,5 +1,6 @@
 {Operator, Delete} = require './general-operators'
 _ = require 'underscore-plus'
+settings = require '../settings'
 
 # The operation for text entered in input mode. Broadly speaking, input
 # operators manage an undo transaction and set a @typingCompleted variable when
@@ -17,24 +18,37 @@ class Insert extends Operator
   execute: ->
     if @typingCompleted
       return unless @typedText? and @typedText.length > 0
-      @undoTransaction =>
-        @editor.getBuffer().insert(@editor.getCursorBufferPosition(), @typedText, true)
+      @editor.insertText(@typedText, normalizeLineEndings: true)
+      for cursor in @editor.getCursors()
+        cursor.moveLeft() unless cursor.isAtBeginningOfLine()
     else
       @vimState.activateInsertMode()
       @typingCompleted = true
+    return
 
   inputOperator: -> true
 
 class InsertAfter extends Insert
   execute: ->
-    @editor.moveCursorRight() unless @editor.getCursor().isAtEndOfLine()
+    @editor.moveRight() unless @editor.getLastCursor().isAtEndOfLine()
+    super
+
+class InsertAfterEndOfLine extends Insert
+  execute: ->
+    @editor.moveToEndOfLine()
+    super
+
+class InsertAtBeginningOfLine extends Insert
+  execute: ->
+    @editor.moveToBeginningOfLine()
+    @editor.moveToFirstCharacterOfLine()
     super
 
 class InsertAboveWithNewline extends Insert
   execute: (count=1) ->
-    @editor.beginTransaction() unless @typingCompleted
+    @vimState.setInsertionCheckpoint() unless @typingCompleted
     @editor.insertNewlineAbove()
-    @editor.getCursor().skipLeadingWhitespace()
+    @editor.getLastCursor().skipLeadingWhitespace()
 
     if @typingCompleted
       # We'll have captured the inserted newline, but we want to do that
@@ -42,14 +56,14 @@ class InsertAboveWithNewline extends Insert
       @typedText = @typedText.trimLeft()
       return super
 
-    @vimState.activateInsertMode(transactionStarted = true)
+    @vimState.activateInsertMode()
     @typingCompleted = true
 
 class InsertBelowWithNewline extends Insert
   execute: (count=1) ->
-    @editor.beginTransaction() unless @typingCompleted
+    @vimState.setInsertionCheckpoint() unless @typingCompleted
     @editor.insertNewlineBelow()
-    @editor.getCursor().skipLeadingWhitespace()
+    @editor.getLastCursor().skipLeadingWhitespace()
 
     if @typingCompleted
       # We'll have captured the inserted newline, but we want to do that
@@ -57,7 +71,7 @@ class InsertBelowWithNewline extends Insert
       @typedText = @typedText.trimLeft()
       return super
 
-    @vimState.activateInsertMode(transactionStarted = true)
+    @vimState.activateInsertMode()
     @typingCompleted = true
 
 #
@@ -65,94 +79,115 @@ class InsertBelowWithNewline extends Insert
 #
 class Change extends Insert
   standalone: false
+  register: null
+
+  constructor: (@editor, @vimState, {@selectOptions}={}) ->
+    @register = settings.defaultRegister()
 
   # Public: Changes the text selected by the given motion.
   #
   # count - The number of times to execute.
   #
   # Returns nothing.
-  execute: (count=1) ->
+  execute: (count) ->
     # If we've typed, we're being repeated. If we're being repeated,
     # undo transactions are already handled.
-    @editor.beginTransaction() unless @typingCompleted
-    operator = new Delete(@editor, @vimState, allowEOL: true, selectOptions: {excludeWhitespace: true})
-    operator.compose(@motion)
+    @vimState.setInsertionCheckpoint() unless @typingCompleted
 
-    lastRow = @onLastRow()
-    onlyRow = @editor.getBuffer().getLineCount() is 1
-    operator.execute(count)
-    if @motion.isLinewise?() and not onlyRow
-      if lastRow
-        @editor.insertNewlineBelow()
+    if _.contains(@motion.select(count, excludeWhitespace: true), true)
+      @setTextRegister(@register, @editor.getSelectedText())
+      if @motion.isLinewise?()
+        @editor.insertNewline()
+        @editor.moveLeft()
       else
-        @editor.insertNewlineAbove()
+        @editor.delete()
 
     return super if @typingCompleted
 
-    @vimState.activateInsertMode(transactionStarted = true)
+    @vimState.activateInsertMode()
     @typingCompleted = true
 
-  onLastRow: ->
-    {row, column} = @editor.getCursorBufferPosition()
-    row is @editor.getBuffer().getLastRow()
-
 class Substitute extends Insert
+  register: null
+
+  constructor: (@editor, @vimState, {@selectOptions}={}) ->
+    @register = settings.defaultRegister()
+
   execute: (count=1) ->
-    @editor.beginTransaction() unless @typingCompleted
+    @vimState.setInsertionCheckpoint() unless @typingCompleted
     _.times count, =>
       @editor.selectRight()
+    text = @editor.getLastSelection().getText()
+    @setTextRegister(@register, text)
     @editor.delete()
 
     if @typingCompleted
       @typedText = @typedText.trimLeft()
       return super
 
-    @vimState.activateInsertMode(transactionStarated = true)
+    @vimState.activateInsertMode()
     @typingCompleted = true
 
 class SubstituteLine extends Insert
+  register: null
+
+  constructor: (@editor, @vimState, {@selectOptions}={}) ->
+    @register = settings.defaultRegister()
+
   execute: (count=1) ->
-    @editor.beginTransaction() unless @typingCompleted
-    @editor.moveCursorToBeginningOfLine()
+    @vimState.setInsertionCheckpoint() unless @typingCompleted
+    @editor.moveToBeginningOfLine()
     _.times count, =>
-      @editor.selectDown()
+      @editor.selectToEndOfLine()
+      @editor.selectRight()
+    text = @editor.getLastSelection().getText()
+    @setTextRegister(@register, text)
     @editor.delete()
     @editor.insertNewlineAbove()
-    @editor.getCursor().skipLeadingWhitespace()
+    @editor.getLastCursor().skipLeadingWhitespace()
 
     if @typingCompleted
       @typedText = @typedText.trimLeft()
       return super
 
-    @vimState.activateInsertMode(transactionStarated = true)
+    @vimState.activateInsertMode()
     @typingCompleted = true
 
 # Takes a transaction and turns it into a string of what was typed.
 # This class is an implementation detail of Insert
 class TransactionBundler
   constructor: (@transaction) ->
+    @position = null
+    @content = ""
 
   buildInsertText: ->
-    return "" unless @transaction.patches
-    chars = []
-    for patch in @transaction.patches
-      switch
-        when @isTypedChar(patch) then chars.push(@isTypedChar(patch))
-        when @isBackspacedChar(patch) then chars.pop()
-    chars.join("")
+    @addPatch(patch) for patch in @transaction.patches ? []
+    @content
 
-  isTypedChar: (patch) ->
-    # Technically speaking, a typed char will be of length 1, but >= 1
-    # happens to let us test with editor.setText, so we'll look the other way.
-    return false unless patch.newText?.length >= 1 and patch.oldText?.length == 0
-    patch.newText
+  addPatch: (patch) ->
+    return unless patch.newRange?
+    if @isAppending(patch)
+      @content += patch.newText
+      @position = patch.newRange.end
+    else if @isRemovingFromEnd(patch)
+      @content = @content.substring(0, @content.length - patch.oldText.length)
+      @position = patch.newRange.end
 
-  isBackspacedChar: (patch) ->
-    patch.newText == "" and patch.oldText?.length == 1
+  isAppending: (patch) ->
+    (patch.newText.length > 0) and
+      (patch.oldText.length is 0) and
+      ((not @position) or @position.isEqual(patch.newRange.start))
+
+  isRemovingFromEnd: (patch) ->
+    (patch.newText.length is 0) and
+      (patch.oldText.length > 0) and
+      (@position and @position?.isEqual(patch.oldRange.end))
 
 module.exports = {
   Insert,
   InsertAfter,
+  InsertAfterEndOfLine,
+  InsertAtBeginningOfLine,
   InsertAboveWithNewline,
   InsertBelowWithNewline,
   Change,

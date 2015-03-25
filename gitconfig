@@ -19,14 +19,23 @@
   br = branch
   bra = branch -a
 [core]
-  excludesfile = ~/.gitignore
+	excludesfile = ~/.gitignore
   autocrlf = input
+	editor = vim
 [include]
   path = .gitconfig.local
 [commit]
   template = ~/.gitmessage
 [user]
-  name = David Elliott
-  email = david@gophilosophie.com
+	name = David Elliott
+	email = david@gophilosophie.com
 [branch]
   autosetuprebase = always
+[filter "media"]
+	required = true
+	clean = git media clean %f
+	smudge = git media smudge %f
+[filter "hawser"]
+	clean = git hawser clean %f
+	smudge = git hawser smudge %f
+	required = true

@@ -75,6 +75,9 @@ unsetopt nomatch
 eval "$(rbenv init - --no-rehash)"
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 
+# for play framework
+export PATH="$PATH:/Users/david/work/activator"
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 # fe [FUZZY PATTERN] - Open the selected file with the default editor
 #   - Bypass fuzzy finder if there's only one match (--select-1)

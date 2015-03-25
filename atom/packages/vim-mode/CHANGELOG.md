@@ -1,5 +1,125 @@
 ## HEAD
 
+## 0.40
+
+* Fixed an issue where the search input text was not visible - @tmm1 
+* Added a different status-bar entry for visual-line mode - @jacekkopecky
+
+## 0.39
+
+* Made repeating insertions work more correctly with multiple cursors
+* Fixed bugs in `*` and `#` with cursor between words - @jacekkopecky
+
+## 0.38
+
+* Implemented change case operators: `gU`, `gu` and `g~` - @jacekkopecky
+* Fixed behavior of repeating `I` and `A` insertions - @jacekkopecky
+
+## 0.36
+
+* Fixed an issue where `d` and `c` with forward motions would sometimes
+  incorrectly delete the character before the cursor - @deiwin
+
+## 0.35
+
+* Implemented basic version of `i t` operator - @neiled
+* Made `t` motion repeatable with `;` - @jacekkopecky
+
+## 0.34
+
+* Added a service API so that other packages can extend vim-mode - @lloeki
+* Added an insert-mode mapping for ctrl-u - @nicolaiskogheim
+
+## 0.33
+
+* Added a setting for using the system clipboard as the default register - @chrisfarms
+
+## 0.32
+
+* Added setting for allowing traversal of line breaks via `h` and `l` - @jacekkopecky
+* Fixed handling of whitespace characters in `B` mapping - @jacekkopecky
+* Fixed bugs when using counts with `f`, `F`, `t` and `T` mappings - @jacekkopecky
+
+## 0.31
+
+* Added '_' binding - @ftwillms
+* Fixed an issue where the '>', '<', and '=' operators
+  would move the cursor incorrectly.
+
+## 0.30
+
+* Make toggle-case operator work with multiple cursors
+
+## 0.29
+
+* Fix regression where '%' stopped working across multiple lines
+
+## 0.28
+
+* Fix some deprecation warnings
+
+## 0.27
+
+* Enter visual mode when selecting text in command mode
+* Don't select text after undo
+* Always preserve selection of the intially-selected character in visual mode
+* Fix bugs in the '%' motion
+* Fix bugs in the 'S' operator
+
+## 0.26
+
+* Add o mapping in visual mode, for reversing selections
+* Implement toggle-case in visual mode
+* Fix bug in 'around word' text object
+
+## 0.25
+
+* Fixed a regression in the handling of the 'cw' command
+* Made the replace operator work with multiple cursors
+
+## 0.24
+
+* Fixed the position of the cursor after certain yank operations.
+* Fixed an issue where duplicate vim states were created when an editors were
+  moved to different panes.
+
+## 0.23
+
+* Made motions, operators and text-objects work properly in the
+  presence of multiple cursors.
+
+## 0.22
+
+* Fixed a stylesheet issue that caused visual glitches when vim-mode
+  was disabled with the Shadow DOM turned on.
+
+## 0.21
+
+* Fix issue where search panel was not removed properly
+* Updated the stylesheet for compatibility with shadow-DOM-enabled editors
+
+## 0.20
+* Ctrl-w for delete-to-beginning-of-word in insert mode
+* Folding key-bindings
+* Remove more deprecated APIs
+
+## 0.19.1
+* Fix behavior of ctrl-D, ctrl-U @anvyzhang
+* Fix selection when moving up or down in visual line mode @mdp
+* Remove deprecated APIs
+* Fix interaction with autocomplete
+
+## 0.19
+* Properly re-enable editor input after disabling vim-mode
+
+## 0.17
+* Fix typo
+
+## 0.16
+* Make go-to-line motions work with operators @gittyupagain
+* Allow replacing text with newlines using `r` @dcalhoun
+* Support smart-case in when searching @isaachess
+
 ## 0.14
 * Ctrl-c for command mode on mac only @sgtpepper43
 * Add css to status bar mode for optional custom styling @e-jigsaw
