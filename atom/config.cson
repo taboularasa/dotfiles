@@ -20,10 +20,6 @@
       "white-cursor"
       "easy-motion"
     ]
-    themes: [
-      "one-dark-ui"
-      "solarized-dark-syntax"
-    ]
   "exception-reporting":
     userId: "adca269e-5cf2-fcc8-e740-8c81a0adbf71"
   "release-notes":
@@ -43,7 +39,6 @@
   "sourcegraph-atom":
     logStatusToConsole: true
     srcExecutablePath: "/usr/local/bin/src"
-  "tree-view":
-    hideVcsIgnoredFiles: true
+  "tree-view": {}
   "easy-motion": {}
   emmet: {}
