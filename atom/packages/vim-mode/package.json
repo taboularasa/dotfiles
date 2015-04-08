@@ -1,7 +1,7 @@
 {
   "name": "vim-mode",
   "main": "./lib/vim-mode",
-  "version": "0.42.0",
+  "version": "0.43.0",
   "description": "Add vim modal control",
   "license": "MIT",
   "private": true,
@@ -37,10 +37,10 @@
     "url": "https://github.com/atom/vim-mode/issues"
   },
   "homepage": "https://github.com/atom/vim-mode",
-  "_id": "vim-mode@0.42.0",
-  "_shasum": "42f4640a8ed0270f5c74c03b6b57624312ef1166",
-  "_resolved": "file:../d-115231-42014-1ld28cg/package.tgz",
-  "_from": "../d-115231-42014-1ld28cg/package.tgz",
+  "_id": "vim-mode@0.43.0",
+  "_shasum": "173a7043412176e42965b2a063ed19186f1eca92",
+  "_resolved": "file:../d-11538-52183-fd0x8h/package.tgz",
+  "_from": "../d-11538-52183-fd0x8h/package.tgz",
   "_atomModuleCache": {
     "version": 1,
     "dependencies": [
@@ -138,7 +138,7 @@
         "lib/utils.coffee",
         "lib/view-models/search-view-model.coffee",
         "lib/view-models/view-model.coffee",
-        "lib/view-models/vim-command-mode-input-view.coffee",
+        "lib/view-models/vim-command-mode-input-element.coffee",
         "lib/vim-mode.coffee",
         "lib/vim-state.coffee"
       ],
