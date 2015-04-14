@@ -1,11 +1,17 @@
 {
   "name": "line-length-break",
   "main": "./lib/line-length-break",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "author": {
     "name": "Sebastian Senf",
-    "email": "@mustardamus"
+    "email": "me@akrasia.me"
   },
+  "contributers": [
+    {
+      "name": "Ziga",
+      "email": "zigomir@gmail.com"
+    }
+  ],
   "description": "Break all lines that go over the preferred line length.",
   "activationEvents": [
     "line-length-break:break"
@@ -16,7 +22,7 @@
   },
   "license": "MIT",
   "engines": {
-    "atom": ">0.50.0"
+    "atom": ">=0.174.0 <2.0.0"
   },
   "dependencies": {},
   "readme": "# Line Length Break\n\nSimple. This package breaks all lines that go over the preferred line length.\n\n![In action](http://i.gyazo.com/10904ec34db604969502a531ac4e65e1.gif)\n",
@@ -25,12 +31,10 @@
     "url": "https://github.com/mustardamus/line-length-break/issues"
   },
   "homepage": "https://github.com/mustardamus/line-length-break",
-  "_id": "line-length-break@0.2.0",
-  "dist": {
-    "shasum": "fde5d106d58144e1a1beff1672788e35177eff57"
-  },
-  "_resolved": "/private/var/folders/py/5h9jmzy91jl0m8vff4ss_9xc0000gp/T/d-114106-8814-khzuyn/package.tgz",
-  "_from": "/private/var/folders/py/5h9jmzy91jl0m8vff4ss_9xc0000gp/T/d-114106-8814-khzuyn/package.tgz",
+  "_id": "line-length-break@0.3.0",
+  "_shasum": "8dc114957d26ab9ad50044688fef7f1ab14c5a31",
+  "_resolved": "file:../d-11539-11246-g7vljj/package.tgz",
+  "_from": "../d-11539-11246-g7vljj/package.tgz",
   "_atomModuleCache": {
     "version": 1,
     "dependencies": [],

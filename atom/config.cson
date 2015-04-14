@@ -14,7 +14,6 @@
       "image-view"
       "asteroids"
       "linter-erb"
-      "linter"
       "open-on-github"
       "symbol-gen"
       "white-cursor"
@@ -33,7 +32,8 @@
     openProjectFindResultsInRightPane: true
   linter:
     showHighlighting: false
-    statusBar: "Show all errors"
+    showErrorInline: false
+    statusBar: "Show error of the selected line"
   "autocomplete-plus":
     includeCompletionsFromAllBuffers: true
   "sourcegraph-atom":
@@ -42,3 +42,4 @@
   "tree-view": {}
   "easy-motion": {}
   emmet: {}
+  "linter-rubocop": {}

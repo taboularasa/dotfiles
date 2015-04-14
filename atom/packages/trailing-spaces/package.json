@@ -1,6 +1,6 @@
 {
   "name": "trailing-spaces",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "main": "./lib/main.coffee",
   "description": "Highlights trailing white space.",
   "repository": {
@@ -17,12 +17,10 @@
     "url": "https://github.com/wpillar/atom-trailing-spaces/issues"
   },
   "homepage": "https://github.com/wpillar/atom-trailing-spaces",
-  "_id": "trailing-spaces@0.2.4",
-  "dist": {
-    "shasum": "4ddcf637f31b9844d9ee366dc908c48612d5b9fc"
-  },
-  "_resolved": "/private/var/folders/py/5h9jmzy91jl0m8vff4ss_9xc0000gp/T/d-115020-2700-boq81x/package.tgz",
-  "_from": "/private/var/folders/py/5h9jmzy91jl0m8vff4ss_9xc0000gp/T/d-115020-2700-boq81x/package.tgz",
+  "_id": "trailing-spaces@0.2.5",
+  "_shasum": "50124118de4704e23f448162e7a677ea74707031",
+  "_resolved": "file:../d-115313-17178-csw2i9/package.tgz",
+  "_from": "../d-115313-17178-csw2i9/package.tgz",
   "_atomModuleCache": {
     "version": 1,
     "dependencies": [],
