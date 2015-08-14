@@ -1,5 +1,73 @@
 ## HEAD
 
+## 0.57
+
+* Added replace ('R') mode! - @jacekkopecky
+* Added the `iW` and `aW` text objects! - @jacekkopecky
+* Made the 't' operator behave correctly when the cursor was already on the  
+  searched  character - @jacekkopecky
+* Fixed the position of the cursor after pasting with 'p' - @jacekkopecky
+
+## 0.56
+
+* Renamed 'command mode' to 'normal mode' - @coolwanglu
+
+## 0.55
+
+* Fixed indentation commands so that they exit visual mode - @bronson
+* Implemented horizontal scrolling commands `z s` and `z e` - @jacekkopecky
+
+## 0.54
+
+* Fixed an error where repeating an insertion command would not handle
+  characters inserted by packages like autocomplete or bracket-matcher - @jacekkopecky
+
+## 0.53
+
+* Fixed an exception that would occur when using `.` to repeat in certain cases.
+
+## 0.52
+
+* Fixed incorrect cursor motion when exiting visual mode w/ a reversed
+  selection - @t9md
+* Added setting to configure the regexp used for numbers and the `ctrl-a`
+  and `ctrl-x` keybindings - @jacekkopecky
+
+## 0.50
+
+* Fixed cursor position after `dd` command - @bronson
+* Implement `ap` text-object differently than `ip` - MarkusSN
+
+## 0.49
+
+* Fixed an issue that caused the cursor to move left incorrectly when near
+  the end of a line.
+
+## 0.48
+
+* Fixed usages of deprecated APIs
+
+## 0.47
+
+* Fixed usages of deprecated APIs - @hitsmaxft, @jacekkopecky
+
+## 0.46
+
+* Fixed issues with deleting when there are multiple selections - @jacekkopecky
+* Added paragraph text-objects 'ip' and 'ap' - @t9md
+* Fixed use of a deprecated method - @akonwi
+
+## 0.45
+
+* Added `ctrl-x` and `ctrl-a` for incrementing and decrementing numbers - @jacekkopecky
+* Fixed the behavior of scrolling motions in visual mode - @daniloisr
+
+## 0.44
+
+* Fixed issue where canceling the replace operator would delete text - @jacekkopecky
+* Implemented repeat search commands: '//', '??', etc - @jacekkopecky
+* Fixed issue where registers' contents were overwritten with the empty string - @jacekkopecky
+
 ## 0.43
 
 * Made '%', '\*' and '\#' interact properly with search history @jacekkopecky

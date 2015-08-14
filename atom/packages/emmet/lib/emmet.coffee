@@ -77,8 +77,8 @@ runAction = (action, evt) ->
         se.destroy()
       else
         return evt.abortKeyBinding()
-  
-  if action is 'toggle_comment' and toggleCommentSyntaxes.indexOf(syntax) is -1
+
+  if action is 'toggle_comment' and (toggleCommentSyntaxes.indexOf(syntax) is -1 or not atom.config.get 'emmet.useEmmetComments')
     return evt.abortKeyBinding()
 
   if action is 'insert_formatted_line_break_only'
@@ -122,9 +122,17 @@ loadExtensions = () ->
     console.warn 'Emmet: no such extension folder:', extPath
 
 module.exports =
-  configDefaults:
-    extensionsPath: '~/emmet'
-    formatLineBreaks: true
+  config:
+    extensionsPath:
+      type: 'string'
+      default: '~/emmet'
+    formatLineBreaks:
+      type: 'boolean'
+      default: true
+    useEmmetComments:
+      type: 'boolean'
+      default: false
+      description: 'disable to use atom native commenting system'
 
   activate: (@state) ->
     @subscriptions = new CompositeDisposable

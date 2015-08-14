@@ -152,7 +152,7 @@ module.exports =
   getCurrentLine: ->
     sel = @getSelectionBufferRange()
     row = sel.getRows()[0]
-    return @editor.lineForBufferRow(row)
+    return @editor.lineTextForBufferRow(row)
 
   # Returns the editor content.
   getContent: ->
@@ -205,7 +205,9 @@ module.exports =
 
   # Returns the editor's syntax mode.
   getSyntax: ->
-    syntax = @getGrammar()
+    syntax = @getGrammar().split(' ')[0]
+    unless resources.hasSyntax syntax
+        syntax = "html"
 
     if /\b(javascript|jsx)\b/.test(syntax)
       syntax = if @getCurrentScope().some((scope) -> /\bstring\b/.test scope) then 'html' else 'jsx'

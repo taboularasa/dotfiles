@@ -16,7 +16,7 @@ class SearchBase extends MotionWithInput
   reversed: =>
     @initiallyReversed = @reverse = true
     @updateCurrentSearch()
-    @
+    this
 
   moveCursor: (cursor, count=1) ->
     ranges = @scan(cursor)
@@ -64,21 +64,17 @@ class SearchBase extends MotionWithInput
       new RegExp(_.escapeRegExp(term), modFlags)
 
   updateCurrentSearch: ->
-    @vimState.globalVimState.currentSearch.reverse = @reverse;
-    @vimState.globalVimState.currentSearch.initiallyReversed = @initiallyReversed;
+    @vimState.globalVimState.currentSearch.reverse = @reverse
+    @vimState.globalVimState.currentSearch.initiallyReversed = @initiallyReversed
 
   replicateCurrentSearch: ->
-    @reverse = @vimState.globalVimState.currentSearch.reverse;
-    @initiallyReversed = @vimState.globalVimState.currentSearch.initiallyReversed;
+    @reverse = @vimState.globalVimState.currentSearch.reverse
+    @initiallyReversed = @vimState.globalVimState.currentSearch.initiallyReversed
 
 class Search extends SearchBase
   constructor: (@editor, @vimState) ->
     super(@editor, @vimState)
-    @viewModel = new SearchViewModel(@)
-
-  compose: (input) ->
-    super(input)
-    @viewModel.value = @input.characters
+    @viewModel = new SearchViewModel(this)
 
 class SearchCurrentWord extends SearchBase
   @keywordRegex: null
@@ -116,7 +112,7 @@ class SearchCurrentWord extends SearchBase
   cursorIsOnEOF: (cursor) ->
     pos = cursor.getNextWordBoundaryBufferPosition(wordRegex: @keywordRegex)
     eofPos = @editor.getEofBufferPosition()
-    pos.row == eofPos.row && pos.column == eofPos.column
+    pos.row is eofPos.row and pos.column is eofPos.column
 
   getCurrentWordMatch: ->
     characters = @getCurrentWord()
@@ -208,7 +204,7 @@ class RepeatSearch extends SearchBase
 
   reversed: ->
     @reverse = not @initiallyReversed
-    @
+    this
 
 
 module.exports = {Search, SearchCurrentWord, BracketMatchingMotion, RepeatSearch}

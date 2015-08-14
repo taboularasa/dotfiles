@@ -1,6 +1,6 @@
 {
   "name": "language-ember-script",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "EmberScript language support in Atom",
   "license": "MIT",
   "repository": {
@@ -27,10 +27,21 @@
   },
   "readme": "# EmberScript language support in Atom\n\nAdds syntax highlighting and snippets to EmberScript files in Atom.\n\nContributions are greatly appreciated. Please fork this repository and open a\npull request to add snippets, make grammar tweaks, etc.\n",
   "readmeFilename": "README.md",
-  "_id": "language-ember-script@0.1.0",
-  "dist": {
-    "shasum": "79ad6e4a99a76d89bf4d3f3fad2800a8082f5a4d"
-  },
-  "_resolved": "/var/folders/py/5h9jmzy91jl0m8vff4ss_9xc0000gp/T/d-114627-57305-1k6uk0w/package.tgz",
-  "_from": "/var/folders/py/5h9jmzy91jl0m8vff4ss_9xc0000gp/T/d-114627-57305-1k6uk0w/package.tgz"
+  "_id": "language-ember-script@0.2.0",
+  "_shasum": "7f9b93d608aa4ae1496f8538caa4cee6bd91f660",
+  "_resolved": "file:../d-11555-1038-krf4wp/package.tgz",
+  "_from": "../d-11555-1038-krf4wp/package.tgz",
+  "_atomModuleCache": {
+    "version": 1,
+    "dependencies": [],
+    "extensions": {
+      ".coffee": [
+        "Gruntfile.coffee"
+      ],
+      ".json": [
+        "package.json"
+      ]
+    },
+    "folders": []
+  }
 }

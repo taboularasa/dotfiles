@@ -1,12 +1,14 @@
 {
   "name": "ruby-syntax-replacer",
   "main": "./lib/ruby-syntax-replacer",
-  "version": "0.3.2",
+  "version": "0.4.0",
   "private": true,
   "description": "Will replace all old Ruby hash syntax with new",
-  "activationEvents": [
-    "ruby-syntax-replacer:replace"
-  ],
+  "activationCommands": {
+    "atom-text-editor": [
+      "ruby-syntax-replacer:replace"
+    ]
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/omegahm/ruby-syntax-replacer"
@@ -22,10 +24,10 @@
     "url": "https://github.com/omegahm/ruby-syntax-replacer/issues"
   },
   "homepage": "https://github.com/omegahm/ruby-syntax-replacer",
-  "_id": "ruby-syntax-replacer@0.3.2",
-  "_shasum": "0fcf165f0935c388a96622a42b049512c733a971",
-  "_resolved": "file:../d-115125-70245-18mwkib/package.tgz",
-  "_from": "../d-115125-70245-18mwkib/package.tgz",
+  "_id": "ruby-syntax-replacer@0.4.0",
+  "_shasum": "7c4664287a4de6a91ea3b2a686f728d959644d46",
+  "_resolved": "file:../d-115420-1502-15f1pat/package.tgz",
+  "_from": "../d-115420-1502-15f1pat/package.tgz",
   "_atomModuleCache": {
     "version": 1,
     "dependencies": [],

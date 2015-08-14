@@ -1,11 +1,11 @@
 {
   "name": "rails-rspec",
   "main": "./lib/rails-rspec",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "Toggle spec and tested file in rails project",
-  "activationEvents": [
-    "rails-rspec:toggle-spec-file"
-  ],
+  "activationCommands": {
+    "atom-text-editor": "rails-rspec:toggle-spec-file"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/wangyuhere/atom-rails-rspec"
@@ -21,10 +21,10 @@
     "url": "https://github.com/wangyuhere/atom-rails-rspec/issues"
   },
   "homepage": "https://github.com/wangyuhere/atom-rails-rspec",
-  "_id": "rails-rspec@0.3.1",
-  "_shasum": "23ab0847c4c44d5c36b7bd3867ee6eba86002eaf",
-  "_resolved": "file:../d-115026-19570-neu3rv/package.tgz",
-  "_from": "../d-115026-19570-neu3rv/package.tgz",
+  "_id": "rails-rspec@0.3.2",
+  "_shasum": "7dda446a5f2176a16e5fbca263373f51131d0499",
+  "_resolved": "file:../d-11558-26636-1mbnrim/package.tgz",
+  "_from": "../d-11558-26636-1mbnrim/package.tgz",
   "_atomModuleCache": {
     "version": 1,
     "dependencies": [],

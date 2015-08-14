@@ -108,3 +108,6 @@ fbr() {
   branch=$(echo "$branches" | fzf +s +m) &&
   git checkout $(echo "$branch" | sed "s/.* //")
 }
+
+export NVM_DIR="/Users/david/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm

@@ -1,7 +1,7 @@
 {
   "name": "line-length-break",
   "main": "./lib/line-length-break",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "author": {
     "name": "Sebastian Senf",
     "email": "me@akrasia.me"
@@ -13,9 +13,11 @@
     }
   ],
   "description": "Break all lines that go over the preferred line length.",
-  "activationEvents": [
-    "line-length-break:break"
-  ],
+  "activationCommands": {
+    "atom-text-editor": [
+      "line-length-break:break"
+    ]
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/mustardamus/line-length-break"
@@ -31,10 +33,10 @@
     "url": "https://github.com/mustardamus/line-length-break/issues"
   },
   "homepage": "https://github.com/mustardamus/line-length-break",
-  "_id": "line-length-break@0.3.0",
-  "_shasum": "8dc114957d26ab9ad50044688fef7f1ab14c5a31",
-  "_resolved": "file:../d-11539-11246-g7vljj/package.tgz",
-  "_from": "../d-11539-11246-g7vljj/package.tgz",
+  "_id": "line-length-break@0.4.0",
+  "_shasum": "18e19fb744fa2a3367e27504be49c71008fcba23",
+  "_resolved": "file:../d-115518-1675-1kyzqj2/package.tgz",
+  "_from": "../d-115518-1675-1kyzqj2/package.tgz",
   "_atomModuleCache": {
     "version": 1,
     "dependencies": [],

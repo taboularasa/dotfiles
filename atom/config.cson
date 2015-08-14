@@ -1,9 +1,12 @@
 "*":
   editor:
-    fontFamily: "Anonymous Pro"
+    fontFamily: "Ubuntu Mono derivative Powerline"
     showInvisibles: true
     showIndentGuide: true
     invisibles: {}
+    softWrapAtPreferredLineLength: true
+    undoGroupingInterval: 100
+    fontSize: 16
   core:
     disabledPackages: [
       "autocomplete"
@@ -14,10 +17,12 @@
       "image-view"
       "asteroids"
       "linter-erb"
-      "open-on-github"
       "symbol-gen"
       "white-cursor"
       "easy-motion"
+      "linter-reek"
+      "git-blame-plus"
+      "linter-scss-lint"
     ]
   "exception-reporting":
     userId: "adca269e-5cf2-fcc8-e740-8c81a0adbf71"
@@ -34,8 +39,16 @@
     showHighlighting: false
     showErrorInline: false
     statusBar: "Show error of the selected line"
+    lintOnChange: false
+    lintOnEditorFocus: false
+    clearOnChange: true
+    ignoredLinterErrors: [
+      "rubocop"
+      "scspell"
+    ]
   "autocomplete-plus":
     includeCompletionsFromAllBuffers: true
+    confirmCompletion: "tab"
   "sourcegraph-atom":
     logStatusToConsole: true
     srcExecutablePath: "/usr/local/bin/src"
@@ -43,3 +56,17 @@
   "easy-motion": {}
   emmet: {}
   "linter-rubocop": {}
+  "atom-beautify":
+    _analyticsUserId: "598e6532-1fbc-4788-83e9-bf0859aca621"
+  "git-blame": {}
+  "one-dark-ui":
+    layoutMode: "Compact"
+  "one-light-ui":
+    layoutMode: "Compact"
+  tabs: {}
+  "linter-js-standard":
+    honorStyleSettings: true
+    checkStyleDevDependencies: true
+    showEslintRules: true
+    style: "happiness"
+  "vim-mode": {}

@@ -1,96 +1,98 @@
 {CompositeDisposable} = require 'atom'
-path = require 'path'
 S = require 'string'
-
 Prompt = require './prompt'
-RAILS_VIEWS_PATH = 'app/views'
+path = require 'path'
 
 module.exports =
-  configDefaults:
-    showPartialInNewTab: true
+  config:
+    showPartialInNewTab:
+      type: 'boolean'
+      default: true
 
-  railsPartialsView: null
+  prompt: null
 
   activate: (state) ->
-    @subscriptions = new CompositeDisposable
-    @subscriptions.add atom.commands.add 'atom-workspace', 'rails-partials:generate': => @showPrompt(state)
+    @disposables = new CompositeDisposable
+    @disposables.add atom.commands.add 'atom-workspace', 'rails-partials:generate': => @showPrompt()
 
-  showPrompt: (state) ->
-    @railsPartialsView = new Prompt(state.railsPartialsPromptState, @)
+  showPrompt: ->
+    @prompt = new Prompt(@)
 
-  generate: (input, partialFullPath) ->
+  # expects:
+  #   input: 'shared/layout' or 'partial_name'
+  #   partialFullPath: '/Users/....../rails/app/views/layouts/_navbar.html.erb' as given by atom
+  #   parameters: 'f:f user:@user...'
+  generate: (input, partialFullPath, parameters) ->
+    # replace selection for command in original file
     editor = atom.workspace.getActiveTextEditor()
     selection = editor.getLastSelection().getText()
-    editor.insertText(@renderInstruction(@inputPath(input)), autoIndent: true)
+    editor.insertText(
+              @renderInstruction(
+                input,
+                parameters
+              ),
+              autoIndent: atom.config.get('editor.autoIndentOnPaste')
+    ) # insert render command in active file
+
+    # create partial file with selected text
+    selection = @refactorParameters(selection, parameters)
+    console.log selection
     promise = atom.workspace.open(partialFullPath)
     promise.then (partialEditor) ->
-      partialEditor.insertText(selection, autoIndent: true)
+      partialEditor.insertText(selection, autoIndent: atom.config.get('editor.autoIndentOnPaste'))
       partialEditor.saveAs(partialFullPath)
       if !atom.config.get('rails-partials.showPartialInNewTab')
         # close created editor if preference says so
         atom.workspace.destroyActivePaneItem()
 
   deactivate: ->
-    @railsPartialsView.destroy()
+    @prompt.close()
 
   serialize: ->
-    railsPartialsView: @railsPartialsView.serialize()
+    prompt: null
 
-  fileDirectory: (input) ->
-    if S(input).contains('/')
-      # when input is a path we generate the file in
-      # the RAILS_VIEWS_PATH direcotry + input
-      inputPath = S(input).chompLeft('/').s # remove prefix '/'
-      projectPath = atom.project.getPaths(atom.workspace.getActiveTextEditor())[0]
-      path.dirname(path.resolve(projectPath, RAILS_VIEWS_PATH, inputPath))
-    else
-      # generate file on the same directory
-      path.dirname(atom.workspace.getActiveTextEditor().getPath())
+  refactorParameters: (selection, parameters) ->
+    return selection if parameters is null
+    refactoredSelection = selection
+    parameters = S(parameters).parseCSV(' ', null)
+    erbRegex = ///
+      <%
+        .* # match everything inside an erb block
+      %>
+    ///g
 
-  inputPath: (input) ->
-    if S(input).contains('/')
-      S(input).chompLeft('/').s #remove prefix '/'
-    else
-      input
+    erbBlocks = []
+    match = erbRegex.exec(selection)
+    while match isnt null
+      erbBlocks.push(match)
+      match = erbRegex.exec(selection)
 
-  partialName: (fileNameWithoutExtensions) ->
-    "_#{fileNameWithoutExtensions}.html#{@editorExtension()}"
+    # we expect parameters to be of the form "var:@value var2:@value_2 var3:@va..."
+    for param in parameters
+      refactorPair = S(param).parseCSV(':', null)
+      for block in erbBlocks
+        newBlock = S(block).replaceAll(refactorPair[1], refactorPair[0]).s
+        console.log "replacing #{newBlock}"
+        refactoredSelection = S(refactoredSelection).replaceAll(block, newBlock).s
+    refactoredSelection
 
-  partialFullPath: (input) ->
-    directory = @fileDirectory(input)
-    fileName = @getFileName(input)
-    partialName = @partialName(fileName)
-    return "#{directory}/#{partialName}"
+  renderInstruction: (partialName, parameters) ->
+    params = ''
+    if parameters isnt null
+      # prepare params for instruction
+      params = ", #{S(parameters).replaceAll(' ', ', ').s}"
+      params = S(params).replaceAll(':', ': ').s
 
-  getFileName: (input) ->
-    if S(input).contains('/')
-      inputPath = S(input).chompLeft('/').s #remove prefix '/'
-      inputArray = S(input).parseCSV('/', null)
-      fileName = inputArray.pop() # the last element is the file name
-    else
-      fileName = input
-    @removeUnusefulSymbols(fileName)
-
-  editorExtension: ->
     fileName = atom.workspace.getActiveTextEditor().getTitle()
-    path.extname fileName
-
-  removeUnusefulSymbols: (fileName) ->
-    fileName = S(fileName).chompLeft '_' # remove starting underscore
-    # remove present known extensions
-    fileName = S(fileName).chompRight '.erb'
-    fileName = S(fileName).chompRight '.haml'
-    fileName = S(fileName).chompRight '.html'
-    fileName.s
-
-  renderInstruction: (partialName) ->
-    if @editorExtension() == ".haml"
-      "= render \"#{partialName}\""
-    else
-      "<%= render \"#{partialName}\" %>"
-
-  isDirectory: (input) ->
-    if input.slice(-1) == '/'
-      true
-    else
-      false
+    extension = path.extname(fileName)
+    switch extension
+      when '.scss'
+        return "@import \"#{partialName}\";"
+      when '.sass'
+        return "@import #{partialName}"
+      when '.haml'
+        return "= render '#{partialName}'#{params}"
+      when '.slim'
+        return "== render '#{partialName}'#{params}"
+      else
+        return "<%= render '#{partialName}'#{params} %>"
